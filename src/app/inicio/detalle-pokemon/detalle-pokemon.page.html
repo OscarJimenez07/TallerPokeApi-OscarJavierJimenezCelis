@@ -1,0 +1,51 @@
+
+<!-- // OSCAR JAVIER JIMENEZ CELIS -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Detalle del Pokemon</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="pokemonDetalles">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Imagen:</ion-label>
+        <ion-avatar style="width: 100px; height: 100px;">
+          <img [src]="pokemonDetalles.sprites.front_default">
+        </ion-avatar>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Nombre:</ion-label>
+        <ion-text>{{ pokemonDetalles.name }}</ion-text>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Peso:</ion-label>
+        <ion-text>{{ pokemonDetalles.weight }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo(s):</ion-label>
+        <ion-text *ngFor="let type of pokemonDetalles.types">{{ type.type.name }}</ion-text>
+      </ion-item>
+
+    <ion-item>
+  <ion-label>Movimientos:</ion-label>
+  <ion-text>
+    <ng-container *ngFor="let move of pokemonDetalles.moves.slice(0, 3); let i = index">
+      {{ move.move.name }}
+      <ng-container *ngIf="i < 2">, </ng-container> 
+    </ng-container>
+  </ion-text>
+</ion-item>
+ </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Oscar Javier Jimenez Celis - Grupo E191</ion-title>
+  </ion-toolbar>
+</ion-footer>

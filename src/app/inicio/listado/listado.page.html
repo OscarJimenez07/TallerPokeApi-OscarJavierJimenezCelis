@@ -1,0 +1,33 @@
+
+<!-- // OSCAR JAVIER JIMENEZ CELIS -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Listado de Pokemones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="search()"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let pokemon of pokemons" (click)="verPokemonDetalles(pokemon)">
+      <ion-avatar slot="start">
+        <img [src]="pokemon.image">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ pokemon.id }} - {{ pokemon.name }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Oscar Javier Jimenez Celis - Grupo E191</ion-title>
+  </ion-toolbar>
+</ion-footer>
